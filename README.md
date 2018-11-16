@@ -1,6 +1,3 @@
 #ToDoList  
 
-ToDoList application built with __Symfony 4.1.7__  
-
-
-
+ToDoList application built with **Symfony 4.1.7**
