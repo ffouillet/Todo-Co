@@ -1,3 +1,6 @@
-/web/js/* linguist-vendored
-/web/css/* linguist-vendored
-/web/fonts/* linguist-vendored
+/public/js/* linguist-vendored
+/public/css/* linguist-vendored
+/public/fonts/* linguist-vendored
+/assets/js/* linguist-vendored
+/assets/css/* linguist-vendored
+/assets/fonts/* linguist-vendored
