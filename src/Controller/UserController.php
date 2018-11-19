@@ -7,6 +7,7 @@ use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class UserController extends Controller
 {
@@ -15,6 +16,8 @@ class UserController extends Controller
      */
     public function list()
     {
+        // Only admin can see list of users. This could be done with @Security or @IsGranted annotation.s
+        $this->denyAccessUnlessGranted('list_view');
         return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
     }
 
@@ -23,6 +26,9 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
+        // Check if current user can create other users (has ROLE_ADMIN, see UserVoter)
+        $this->denyAccessUnlessGranted('add', $this->getUser());
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -49,6 +55,9 @@ class UserController extends Controller
      */
     public function edit(User $user, Request $request)
     {
+        // Check if current user can edit requested profile (his own profile or has ROLE_ADMIN, see UserVoter)
+        $this->denyAccessUnlessGranted('edit', $user);
+
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
