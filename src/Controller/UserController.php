@@ -16,8 +16,9 @@ class UserController extends Controller
      */
     public function list()
     {
-        // Only admin can see list of users. This could be done with @Security or @IsGranted annotation.s
-        $this->denyAccessUnlessGranted('list_view');
+        // Only admin can see list of users. This could be done with @Security or @IsGranted annotation.
+        $this->denyAccessUnlessGranted('list_view', 'Seul les administrateurs peuvent voir la liste des membres.');
+
         return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
     }
 
@@ -27,7 +28,7 @@ class UserController extends Controller
     public function create(Request $request)
     {
         // Check if current user can create other users (has ROLE_ADMIN, see UserVoter)
-        $this->denyAccessUnlessGranted('add', $this->getUser());
+        $this->denyAccessUnlessGranted('add', $this->getUser(), 'Désolé, seul les administrateurs peuvent ajouter de nouveaux utilisateurs');
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -56,7 +57,7 @@ class UserController extends Controller
     public function edit(User $user, Request $request)
     {
         // Check if current user can edit requested profile (his own profile or has ROLE_ADMIN, see UserVoter)
-        $this->denyAccessUnlessGranted('edit', $user);
+        $this->denyAccessUnlessGranted('edit', $user, 'Désolé, seul les administrateurs peuvent modifier ce profil.');
 
         $form = $this->createForm(UserType::class, $user);
 
