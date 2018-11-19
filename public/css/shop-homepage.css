@@ -6,6 +6,15 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #eee;
+}
+
+nav.navbar {
+    background-image: linear-gradient(to right, #0553a5 , #028fd6);
+}
+
+a.navbar-brand {
+    color : white;
 }
 
 .slide-image {
@@ -51,4 +60,25 @@ body {
 
 footer {
     margin: 50px 0;
+}
+
+#slide-image-small {
+    margin-top: 15px;
+}
+
+#slide-image-login {
+    width: 100%;
+}
+
+.login-panel {
+    padding-bottom : 25px;
+    background-color: white;
+}
+
+.login-panel h1 {
+    margin-bottom: 20px;
+}
+
+.login-panel .alert {
+    margin-top: 15px;
 }
