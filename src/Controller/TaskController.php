@@ -51,11 +51,16 @@ class TaskController extends Controller
      */
     public function edit(Task $task, Request $request)
     {
+
         $form = $this->createForm(TaskEditType::class, $task);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Only task author can edit his task. Users with ROLE_ADMIN can edit all tasks.
+            $this->denyAccessUnlessGranted('edit', $task, "Tasks can be edited only by their authors.");
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'La tâche a bien été modifiée.');
@@ -87,6 +92,9 @@ class TaskController extends Controller
      */
     public function deleteTask(Task $task)
     {
+        // Only task author can delete his task. Tasks without an author can be deleted only by an author with ROLE_ADMIN
+        $this->denyAccessUnlessGranted('delete', $task, "Tasks can be deleted only by their authors.");
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($task);
         $em->flush();
