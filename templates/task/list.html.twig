@@ -5,7 +5,7 @@
 {% block body %}
     <div class="title-add-task-button">
         <h1>Liste des tâches à effectuer</h1>
-        <a href="{{ path('task_create') }}" class="btn btn-info pull-right">Créer une nouvelle tâche</a>
+        <a href="{{ path('task_create') }}" class="btn btn-info pull-right"><i class="fas fa-plus-square"></i>Créer une nouvelle tâche</a>
     </div>
 
     {% if tasks is not empty %}
@@ -24,9 +24,9 @@
                         <td>{{ task.title }}</td>
                         <td>{{ task.author }}</td>
                         <td>
-                            <a href="{{ path('task_edit', { 'id' : task.id }) }}" class="btn btn-primary">Voir</a>
-                            <a href="{{ path('task_toggle', { 'id' : task.id }) }}" class="btn btn-success">Marquer comme faite</a>
-                            <a href="{{ path('task_delete', { 'id' : task.id }) }}" class="btn btn-warning">Supprimer</a>
+                            <a href="{{ path('task_edit', { 'id' : task.id }) }}" class="btn btn-primary"><i class="fas fa-eye"></i>Voir</a>
+                            <a href="{{ path('task_toggle', { 'id' : task.id }) }}" class="btn btn-success"><i class="fas fa-check"></i>Marquer comme faite</a>
+                            <a href="{{ path('task_delete', { 'id' : task.id }) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -13,6 +13,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
+    <!-- Fontawesome 5.5 CSS -->
+    <link href="{{ asset('css/fa-all.min.css') }}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{ asset('css/shop-homepage.css') }}" rel="stylesheet">
 
@@ -50,7 +53,7 @@
     <div class="row top-actions">
         <div class="col-md-12">
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
+                <a href="{{ path('user_create') }}" class="btn btn-primary"><i class="fas fa-plus-square"></i>Créer un utilisateur</a>
             {% endif %}
 
             {% if is_granted('ROLE_ADMIN') %}
@@ -58,11 +61,11 @@
             {% endif %}
 
             {% if app.user %}
-                <a href="{{ path('app_logout') }}" class="logout-button pull-right btn btn-danger">Se déconnecter</a>
+                <a href="{{ path('app_logout') }}" class="logout-button pull-right btn btn-danger"><i class="fas fa-sign-out-alt"></i>Se déconnecter</a>
             {% endif %}
 
             {% if not app.user and 'app_login' != app.request.attributes.get('_route') %}
-                <a href="{{ path('app_login') }}" class="btn btn-success">Se connecter</a>
+                <a href="{{ path('app_login') }}" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>Se connecter</a>
             {% endif %}
         </div>
     </div>

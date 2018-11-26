@@ -132,3 +132,11 @@ nav .navbar-right a:hover{
 .alert {
     margin-top: 15px;
 }
+
+td a.btn {
+    margin-right: 5px;
+}
+
+a i.fas {
+    margin-right: 5px;
+}
