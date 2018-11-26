@@ -6,8 +6,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class TaskRepository extends PagineableRepository {
 
-    public function findAllPaginated($pageNumber = 1, $limitPerPage = 5, $completedTasks = false, $orderAttribute = 'createdAt', $orderValue = 'DESC')
-    {
+    public function findByIsDonePaginated($pageNumber, $limitPerPage, $isDone = null, $orderAttribute = 'createdAt', $orderValue = 'DESC') {
         $entityAlias = 't';
 
         $qb = $this->createQueryBuilder($entityAlias)
@@ -15,9 +14,9 @@ class TaskRepository extends PagineableRepository {
             ->orderBy($entityAlias.'.'.$orderAttribute, $orderValue);
 
         // Get completed tasks (or not)
-        if (true === $completedTasks) {
+        if (true === $isDone) {
             $qb->where($entityAlias.'.isDone = true');
-        } else {
+        } else if (false === $isDone){
             $qb->where($entityAlias.'.isDone = false');
         }
 

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +18,4 @@ abstract class PagineableRepository extends ServiceEntityRepository {
 
         $this->paginator = $paginator;
     }
-
-    abstract protected function findAllPaginated($pageNumber = 1, $limitPerPage = 5, $orderAttribute, $orderValue);
 }
