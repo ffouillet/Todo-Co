@@ -6,10 +6,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class TaskRepository extends PagineableRepository {
 
-    public function findAllPaginated($pageNumber = 1, $limitPerPage = 5)
+    public function findAllPaginated($pageNumber = 1, $limitPerPage = 5, $orderAttribute = 'createdAt', $orderValue = 'DESC')
     {
-        $qb = $this->createQueryBuilder('t')
-            ->select('t');
+        $entityAlias = 't';
+
+        $qb = $this->createQueryBuilder($entityAlias)
+            ->select('t')
+            ->orderBy($entityAlias.'.'.$orderAttribute, $orderValue);
 
         $query = $qb->getQuery();
 

@@ -41,13 +41,11 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ path('user_list') }}">Utilisateurs</a></li>
-                    <li><a href="{{ path('user_create') }}"><i class="fas fa-plus-square"></i>Créer un utilisateur</a></li>
-                {% endif %}
-
                 {% if app.user %}
-                    <li><a href="{{ path('task_list') }}">Tâches</a></li>
+                    <li><a href="{{ path('task_list') }}"><i class="fas fa-tasks"></i>Tâches</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('user_list') }}"><i class="fas fa-user"></i>Utilisateurs</a></li>
+                    {% endif %}
                     <li><a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a></li>
                 {% endif %}
             </ul>

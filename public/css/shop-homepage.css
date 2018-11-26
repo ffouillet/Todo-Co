@@ -87,15 +87,11 @@ footer {
     max-width: 640px;
 }
 
-.jumbotron h1 {
-
-}
-
 .homepage-picture {
     width: 45%;
 }
 
-.title-add-task-button {
+.title-action-buttons-right {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,4 +135,8 @@ td a.btn {
 
 a i.fas {
     margin-right: 5px;
+}
+
+h1 .fa-tasks {
+    margin-right: 25px;
 }

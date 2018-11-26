@@ -3,7 +3,7 @@
 {% block header_img %}{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle tâche</h1>
+    <h1>{{ task.title }}</h1>
     {{ form_start(form, {'action' : path('task_edit', { 'id' : task.id })}) }}
         {{ form_row(form.author) }}
         {{ form_widget(form) }}

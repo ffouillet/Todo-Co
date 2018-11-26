@@ -18,5 +18,5 @@ abstract class PagineableRepository extends ServiceEntityRepository {
         $this->paginator = $paginator;
     }
 
-    abstract protected function findAllPaginated($pageNumber = 1, $limitPerPage = 5);
+    abstract protected function findAllPaginated($pageNumber = 1, $limitPerPage = 5, $orderAttribute, $orderValue);
 }
