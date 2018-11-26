@@ -14,6 +14,7 @@
                 <tr>
                     <th>Tâche</th>
                     <th>Auteur</th>
+                    <th>Date de création</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <tr>
                         <td>{{ task.title }}</td>
                         <td>{{ task.author }}</td>
+                        <td>{{ task.createdAt|localizeddate('none', 'none', null, null, "EEEE dd LLLL yyyy, HH'h'mm")|capitalize}}</td>
                         <td>
                             <a href="{{ path('task_edit', { 'id' : task.id }) }}" class="btn btn-primary"><i class="fas fa-eye"></i>Voir</a>
                             <a href="{{ path('task_toggle', { 'id' : task.id }) }}" class="btn btn-success"><i class="fas fa-check"></i>Marquer comme faite</a>
@@ -32,6 +34,11 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <div class="navigation">
+            {{ knp_pagination_render(tasks) }}
+        </div>
+
     {% else %}
         <div class="alert alert-warning" role="alert">
             Il n'y a pas encore de tâche enregistrée. <a href="{{ path('task_create') }}" class="btn btn-warning pull-right">Créer une tâche</a>
