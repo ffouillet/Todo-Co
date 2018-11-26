@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block header_img %}{% endblock %}
+
+{% block body %}
+    <h1>Oops ! Il y a un problème :-(</h1>
+
+    <p>
+        Il semblerait y avoir un problème avec votre demande...<br/>
+        Veuillez vérifier l'url saisie ou
+        <a href="{{ path('homepage') }}">retourner à la page d'accueil</a>.
+    </p>
+
+    {% block error_image %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
