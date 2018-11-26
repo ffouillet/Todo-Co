@@ -17,7 +17,7 @@ class UserController extends Controller
     public function list()
     {
         // Only admin can see list of users. This could be done with @Security or @IsGranted annotation.
-        $this->denyAccessUnlessGranted('list_view', 'Seul les administrateurs peuvent voir la liste des membres.');
+        $this->denyAccessUnlessGranted('list_view', $this->getUser(), 'Seul les administrateurs peuvent voir la liste des membres.');
 
         return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository(User::class)->findAll()]);
     }
