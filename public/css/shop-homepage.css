@@ -114,10 +114,11 @@ nav .navbar-right a:hover{
 
 .task-actions a{
     font-size: 18px;
-    margin: 0px 5px;
+    margin: 5px 5px;
 }
 
-#todo-task-table tr td {
+.table>tbody>tr>td,
+.table>tbody>tr>th{
     vertical-align: middle;
 }
 
@@ -156,4 +157,49 @@ h1 .fa-tasks {
 
 .username {
     text-decoration: underline;
+}
+
+.navbar  *{
+    color: white !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #0554a6;
+}
+
+
+@media screen and (max-width: 992px) {
+    .login-panel {
+        padding-top: 1px;
+    }
+
+    td a.btn {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    td a.btn {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 12px;
+    }
+
+    .actions-buttons-below-title a:not(:first-of-type) {
+        margin-top: 5px;
+    }
+
+    .title-action-buttons-right {
+        flex-direction: column;
+    }
+
+    .title-action-buttons-right a.btn {
+        margin-bottom: 10px;
+    }
 }
