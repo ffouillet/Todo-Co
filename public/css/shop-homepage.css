@@ -171,6 +171,9 @@ h1 .fa-tasks {
     background-color: #0554a6;
 }
 
+.navbar-default .navbar-collapse {
+    border-color : #1e73ba;
+}
 
 @media screen and (max-width: 992px) {
     .login-panel {
