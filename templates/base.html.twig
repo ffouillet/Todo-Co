@@ -60,6 +60,11 @@
             {% if not app.user and 'app_login' != app.request.attributes.get('_route') %}
                 <a href="{{ path('app_login') }}" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>Se connecter</a>
             {% endif %}
+            {% if app.user %}
+                <div class="pull-right">
+                    <p>Utilisateur connecté: <span class="username">{{ app.user.username }}</span></p>
+                </div>
+            {% endif %}
         </div>
     </div>
 
