@@ -25,6 +25,22 @@ class TaskController extends Controller
     }
 
     /**
+     * @Route("/tasks/completed", name="task_list_completed")
+     */
+    public function listCompleted(Request $request)
+    {
+        $pageNumber = $request->query->getInt('page',1);
+        $maxTasksPerPage = 5;
+        $paginatedTasks =
+            $this->getDoctrine()
+                ->getRepository(Task::class)
+                ->findAllPaginated($pageNumber, $maxTasksPerPage, true);
+
+        return $this->render('task/list_completed.html.twig',
+            ['tasks' => $paginatedTasks]);
+    }
+
+    /**
      * @Route("/tasks/create", name="task_create")
      */
     public function create(Request $request)

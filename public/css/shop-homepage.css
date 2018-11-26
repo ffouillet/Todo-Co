@@ -140,3 +140,16 @@ a i.fas {
 h1 .fa-tasks {
     margin-right: 25px;
 }
+
+.actions-buttons-below-title {
+    margin-bottom: 10px;
+}
+
+.actions-buttons-below-title a {
+    margin-right: 5px;
+}
+
+.no-task-add-task-btn {
+    display: inline-block;
+    margin-top: 10px;
+}
