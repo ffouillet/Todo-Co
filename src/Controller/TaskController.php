@@ -12,9 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 class TaskController extends Controller
 {
     /**
-     * @Route("/tasks", name="task_list")
+     * @Route("/tasks", name="task_list_todo")
      */
-    public function list(Request $request)
+    public function listTodo(Request $request)
     {
         $pageNumber = $request->query->getInt('page',1);
         $maxTasksPerPage = 5;
@@ -61,7 +61,7 @@ class TaskController extends Controller
 
             $this->addFlash('success', 'La tâche a été bien été ajoutée.');
 
-            return $this->redirectToRoute('task_list');
+            return $this->redirectToRoute('task_list_todo');
         }
 
         return $this->render('task/create.html.twig', ['form' => $form->createView()]);
@@ -86,7 +86,7 @@ class TaskController extends Controller
 
             $this->addFlash('success', 'La tâche a bien été modifiée.');
 
-            return $this->redirectToRoute('task_list');
+            return $this->redirectToRoute('task_list_todo');
         }
 
         return $this->render('task/edit.html.twig', [
@@ -105,7 +105,7 @@ class TaskController extends Controller
 
         $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
 
-        return $this->redirectToRoute('task_list');
+        return $this->redirectToRoute('task_list_todo');
     }
 
     /**
@@ -122,6 +122,6 @@ class TaskController extends Controller
 
         $this->addFlash('success', 'La tâche a bien été supprimée.');
 
-        return $this->redirectToRoute('task_list');
+        return $this->redirectToRoute('task_list_todo');
     }
 }
