@@ -119,7 +119,6 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
 
     }
 
-
     public function testDeleteNotByOwner() {
 
         // Login temporary with a different user this time.
