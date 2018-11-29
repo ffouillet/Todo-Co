@@ -22,6 +22,5 @@ class DefaultControllerTest extends WebTestCase
         // Ensure we are on login page
         $this->assertGreaterThan(0, $crawler->filter('h1:contains("Connexion")')->count());
 
-
     }
 }

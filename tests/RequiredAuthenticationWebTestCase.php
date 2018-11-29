@@ -3,7 +3,7 @@
 namespace App\Tests;
 
 use App\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -28,21 +28,15 @@ abstract class RequiredAuthenticationWebTestCase extends WebTestCase
 
     protected function logIn(Client $client, $firewallName, $firewallContext, $userRoles = ['ROLE_USER']){
 
-        $session = $client->getContainer()->get('session');
+        // There is certainly a way to improve that...
+        $this->loadFixtures(array('App\DataFixtures\UserFixtures'));
 
-        // Create a user
-        $user = $this->getMockBuilder('App\Entity\User')->getMock();
-        $user->method('getId')->willReturn(1);
-        $user->method('getUsername')->willReturn("testUser");
-        $user->method('getPassword')->willReturn("testPassword");
+        // Easy login thanks to LiipFunctionalTestBundle.
+        $credentials = array(
+            'username' => 'testAdmin',
+            'password' => 'testPassword'
+        );
 
-        // This project use a Guard Authentication, the authenticated token is a PostAuthenticationGuardToken.
-        $token = new PostAuthenticationGuardToken($user, $firewallName, $userRoles);
-
-        $session->set('_security_'.$firewallContext, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $client->getCookieJar()->set($cookie);
+        $this->client = $this->makeClient($credentials);
     }
 }

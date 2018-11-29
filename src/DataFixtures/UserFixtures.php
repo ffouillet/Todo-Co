@@ -22,13 +22,21 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Create a test user
-        $user = new User();
-        $user->setUsername('testUser');
-        $plainPassword = 'testPassword';
-        $user->setPassword($this->encoder->encodePassword($user, $plainPassword));
+        $users = [
+            ['testUser', 'testPassword', 'testUser@functional-tests.test', ['ROLE_USER']],
+            ['testAdmin', 'testPassword', 'testAdmin@functional-tests.test', ['ROLE_ADMIN']]
+        ];
 
-        $manager->persist($user);
+        foreach($users as $userInfos) {
+            $user = new User();
+            $user->setUsername($userInfos[0]);
+            $plainPassword = $userInfos[1];
+            $user->setPassword($this->encoder->encodePassword($user, $plainPassword));
+            $user->setEmail($userInfos[2]);
+            $user->setRoles($userInfos[3]);
+
+            $manager->persist($user);
+        }
 
         $manager->flush();
     }
