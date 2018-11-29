@@ -119,6 +119,24 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
 
     }
 
+
+    public function testDeleteNotByOwner() {
+
+        // Login temporary with a different user this time.
+        $credentials = array(
+            'username' => 'testUser',
+            'password' => 'testPassword'
+        );
+
+        $otherClient = $this->makeClient($credentials);
+
+        // This task has been created by user 'testAdmin' so 'testUser' won't be able to delete it
+        $crawler = $otherClient->request('GET', '/tasks/1/delete');
+
+        $this->assertEquals(403, $otherClient->getResponse()->getStatusCode());
+
+    }
+
     public function testDelete() {
 
         $this->client->request('GET', '/tasks/1/delete');
@@ -130,4 +148,5 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
 
         $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
     }
+
 }
