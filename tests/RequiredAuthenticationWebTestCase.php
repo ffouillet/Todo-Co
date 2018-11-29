@@ -23,10 +23,10 @@ abstract class RequiredAuthenticationWebTestCase extends WebTestCase
 
         $this->client = static::createClient();
 
-        $this->login($this->client, 'main', 'main', ['ROLE_ADMIN']);
+        $this->login();
     }
 
-    protected function logIn(Client $client, $firewallName, $firewallContext, $userRoles = ['ROLE_USER']){
+    protected function logIn(){
 
         // There is certainly a way to improve that...
         $this->loadFixtures(array('App\DataFixtures\UserFixtures'));
