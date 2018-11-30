@@ -36,6 +36,28 @@ class SecurityControllerTest extends WebTestCase
 
     }
 
+    public function testLoginRedirectToToTargetPath() {
+
+        /**
+         * User tries to access task creation. Will get redirected to login page
+         * then if login was as success (thanks to target path stored in session,
+         * will get redirected to task creation page
+         **/
+        $this->client->request('GET', '/tasks/create');
+
+        $crawler = $this->client->followRedirect();
+
+        $form = $crawler->selectButton('Connexion')->form();
+
+        $form['username'] = "testUser";
+        $form['password'] = "testPassword";
+
+        $this->client->submit($form);
+
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
+
+    }
+
     public function testLogin()
     {
 
