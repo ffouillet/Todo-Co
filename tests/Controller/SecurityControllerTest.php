@@ -36,7 +36,7 @@ class SecurityControllerTest extends WebTestCase
 
     }
 
-    public function testLoginRedirectToToTargetPath() {
+    public function testLoginRedirectToTargetPath() {
 
         /**
          * User tries to access task creation. Will get redirected to login page
