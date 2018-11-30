@@ -16,6 +16,26 @@ class SecurityControllerTest extends WebTestCase
 
     }
 
+    public function testLoginInvalidCSRFToken(){
+        // Manually login user.
+        $crawler = $this->client->request('GET', '/login');
+
+        $form = $crawler->selectButton('Connexion')->form();
+
+        $form['username'] = "testUser";
+        $form['password'] = "testPassword";
+        $form['_csrf_token'] = "fakeToken";
+
+        $this->client->submit($form);
+
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
+
+        $crawler = $this->client->folloWRedirect();
+
+        $this->assertEquals(1, $crawler->filter('html:contains("Jeton CSRF invalide.")')->count());
+
+    }
+
     public function testLogin()
     {
 
