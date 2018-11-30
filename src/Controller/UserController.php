@@ -7,7 +7,6 @@ use App\Form\UserType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class UserController extends Controller
 {
