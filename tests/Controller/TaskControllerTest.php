@@ -130,7 +130,7 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
         $otherClient = $this->makeClient($credentials);
 
         // This task has been created by user 'testAdmin' so 'testUser' won't be able to delete it
-        $crawler = $otherClient->request('GET', '/tasks/1/delete');
+        $otherClient->request('GET', '/tasks/1/delete');
 
         $this->assertEquals(403, $otherClient->getResponse()->getStatusCode());
 
