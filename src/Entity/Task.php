@@ -40,6 +40,12 @@ class Task
      */
     private $isDone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $author;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -76,6 +82,14 @@ class Task
         return $this->content;
     }
 
+    /**
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
     public function setContent($content)
     {
         $this->content = $content;
@@ -89,5 +103,13 @@ class Task
     public function toggle($flag)
     {
         $this->isDone = $flag;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
     }
 }
