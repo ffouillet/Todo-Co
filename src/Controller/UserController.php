@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function edit(User $user, Request $request)
     {
-        // Check if current user can edit requested profile (his own profile or has ROLE_ADMIN, see UserVoter)
+        // Check if current user can edit requested profile (has ROLE_ADMIN)
         $this->denyAccessUnlessGranted('edit', $user, 'Désolé, seul les administrateurs peuvent modifier ce profil.');
 
         $form = $this->createForm(UserType::class, $user);

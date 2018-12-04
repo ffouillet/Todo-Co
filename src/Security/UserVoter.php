@@ -52,10 +52,8 @@ class UserVoter extends Voter
             case self::LIST_VIEW:
             case self::ADD:
             case self::DELETE:
-                return $this->isAdmin();
             case self::EDIT:
-                return $this->canEdit($user, $authenticatedUser);
-
+                return $this->isAdmin();
         }
 
         throw new \LogicException('This code should not be reached!');
@@ -65,17 +63,6 @@ class UserVoter extends Voter
     public function isAdmin() {
 
         if($this->security->isGranted('ROLE_ADMIN')) {
-            return true;
-        }
-
-        return false;
-    }
-
-    // User can only edit his own profile.
-    // Users with ROLE_ADMIN can also edit all profiles.
-    public function canEdit(User $user, User $authenticatedUser) {
-
-        if($user->getId() == $authenticatedUser->getId() || $this->security->isGranted('ROLE_ADMIN')) {
             return true;
         }
 
