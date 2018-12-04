@@ -12,13 +12,13 @@ ToDoList application built with **Symfony 4.1.7**
 
 3.  Edit your parameters like database parameters in ```.env``` file at the project root.
 
-3.  Create the database and update the database schema by running following commands (always in the project directory) :   
+4.  Create the database and update the database schema by running following commands (always in the project directory) :   
 ```php bin/console doctrine:database:create```  
 ```php bin/console doctrine:schema:create```  
 
-4.  Your project is ready, open your browser and go to the server url pointing to your project.
+5.  Your project is ready, open your browser and go to the server url pointing to your project.
 
-5.  This project requires at least one user to use it.  
+6.  This project requires at least one user to use it.  
 You can load fixtures (initial set of test datas) if you want in order to test the project.  
 Fixtures are only two users (an user with ```ROLE_ADMIN``` and another with ```ROLE_USER```), see [UserFixtures](https://github.com/ffouillet/Todo-Co/blob/master/src/DataFixtures/UserFixtures.php) for details.
 To load fixtures, run that command at the project root :  
@@ -34,10 +34,10 @@ Run unit and functional tests by executing following commands at the project roo
 ## Documentation
 
 This project includes :
-* [Technical documentation about authentication](https://github.com/ffouillet/Todo-Co/blob/master/doc/Authentication.md)
-* [Application Diagrams](Todo)
-* [Quality audit and application performance analysis](Todo)
+*   [Technical documentation about authentication](https://github.com/ffouillet/Todo-Co/blob/master/doc/Authentication.md)
+*   [Application Diagrams](Todo)
+*   [Quality audit and application performance analysis](Todo)
 
 ## Contributing to the project  
 
-Please check [CONTRIBUTING.md](https://github.com/ffouillet/Todo-Co/blob/master/CONTRIBUTING.md) in order to contribute.
+Please check [CONTRIBUTING.md](https://github.com/ffouillet/Todo-Co/blob/master/CONTRIBUTING.md) if you want to contribute to the project.
