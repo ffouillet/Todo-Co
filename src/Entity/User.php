@@ -44,6 +44,11 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    public function __construct()
+    {
+        $this->roles[] = 'ROLE_USER';
+    }
+
     public function getId()
     {
         return $this->id;
@@ -80,10 +85,13 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+
+        if(null === $roles) {
+            return [];
+        }
 
         return array_unique($roles);
+
     }
 
     public function getEmail()
