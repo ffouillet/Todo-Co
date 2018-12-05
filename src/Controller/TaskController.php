@@ -59,7 +59,7 @@ class TaskController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             // Only task author can edit his task. Users with ROLE_ADMIN can edit all tasks.
-            $this->denyAccessUnlessGranted('edit', $task, "Désolé, seul les auteurs de leur tâches peuvent les modifier.");
+            $this->denyAccessUnlessGranted('edit', $task, "Désolé, seul l'auteur d'une tâche peut la modifier.");
 
             $this->getDoctrine()->getManager()->flush();
 
