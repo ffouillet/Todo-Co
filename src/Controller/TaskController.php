@@ -21,8 +21,8 @@ class TaskController extends Controller
         $pageNumber = $request->query->getInt('page',1);
         $paginatedTasks =
             $this->getDoctrine()
-                ->getRepository(Task::class
-                )->findByIsDonePaginated($pageNumber, self::MAX_TASKS_PER_PAGE, $completedTasks = false);
+                ->getRepository(Task::class)
+                ->findByIsDonePaginated($pageNumber, self::MAX_TASKS_PER_PAGE, $completedTasks = false);
 
         return $this->render('task/list.html.twig',
             ['tasks' => $paginatedTasks]);
