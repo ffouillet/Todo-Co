@@ -15,13 +15,6 @@ class UserVoter extends Voter
     const EDIT = 'edit';
     const DELETE = 'delete';
 
-    private $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
@@ -46,27 +39,14 @@ class UserVoter extends Voter
             return false;
         }
 
-        $user = $subject;
-
         switch ($attribute) {
             case self::LIST_VIEW:
             case self::ADD:
             case self::DELETE:
             case self::EDIT:
-                return $this->isAdmin();
+                return $authenticatedUser->hasRole('ROLE_ADMIN');
         }
 
         throw new \LogicException('This code should not be reached!');
     }
-
-    // Only users with ROLE_ADMIN can add or delete other users.
-    public function isAdmin() {
-
-        if($this->security->isGranted('ROLE_ADMIN')) {
-            return true;
-        }
-
-        return false;
-    }
-
 }

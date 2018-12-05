@@ -13,13 +13,6 @@ class TaskVoter extends Voter
     const EDIT = 'edit';
     const DELETE = 'delete';
 
-    private $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
@@ -63,7 +56,7 @@ class TaskVoter extends Voter
         // Task should be delete only by their authors.
         // Else if task has no author, task should only be deletable by an user with ROLE_ADMIN
         if($task->getAuthor() !== null && ($task->getAuthor()->getId() == $authenticatedUser->getId()) ||
-            ($task->getAuthor() == null && $this->security->isGranted('ROLE_ADMIN'))) {
+            ($task->getAuthor() == null && $authenticatedUser->hasRole('ROLE_ADMIN'))) {
                 return true;
         }
 
@@ -73,7 +66,7 @@ class TaskVoter extends Voter
     private function canEdit(Task $task, User $authenticatedUser) {
         // Tasks are editable only by their authors or user with ROLE_ADMIN
         if($task->getAuthor()->getId() == $authenticatedUser->getId() ||
-            $this->security->isGranted('ROLE_ADMIN')) {
+            $authenticatedUser->hasRole('ROLE_ADMIN')) {
             return true;
         }
 

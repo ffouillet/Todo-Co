@@ -86,6 +86,15 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    public function hasRole($role) {
+
+        if(in_array($role, $this->getRoles())) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function getEmail()
     {
         return $this->email;
