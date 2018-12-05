@@ -82,16 +82,9 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    public function getRoles()
     {
-        $roles = $this->roles;
-
-        if(null === $roles) {
-            return [];
-        }
-
-        return array_unique($roles);
-
+        return $this->roles;
     }
 
     public function getEmail()
