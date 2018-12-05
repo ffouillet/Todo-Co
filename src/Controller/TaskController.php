@@ -93,7 +93,7 @@ class TaskController extends Controller
     public function deleteTask(Task $task)
     {
         // Only task author can delete his task. Tasks without an author can be deleted only by an author with ROLE_ADMIN
-        $this->denyAccessUnlessGranted('delete', $task, "Désolé, seul les auteurs de leurs tâches peuvent les supprimer.");
+        $this->denyAccessUnlessGranted('delete', $task, "Désolé, seul l'auteur d'une tâche peut la supprimer.");
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($task);
