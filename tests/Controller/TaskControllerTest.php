@@ -90,7 +90,7 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
         $this->assertEquals(200, $otherClient->getResponse()->getStatusCode());
 
         // Get the form
-        $formButtonCrawlerNode = $crawler->selectButton('task_edit');
+        $formButtonCrawlerNode = $crawler->selectButton('Modifier');
         $form = $formButtonCrawlerNode->form();
 
         // Fill the form
