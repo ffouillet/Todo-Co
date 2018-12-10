@@ -95,7 +95,7 @@ class TaskControllerTest extends RequiredAuthenticationWebTestCase
 
         // Fill the form
         $form['task_edit[title]'] = 'Functional Edited Test Task That Won\'t Work';
-        $form['task_edit[content]'] = 'This task gets edited and will fail sfor functional/units tests of this project.';
+        $form['task_edit[content]'] = 'This task gets edited and will fail for functional/units tests of this project.';
 
         $otherClient->submit($form);
 
