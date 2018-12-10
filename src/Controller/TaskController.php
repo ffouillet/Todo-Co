@@ -11,12 +11,36 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends Controller
 {
+    const MAX_TASKS_PER_PAGE = 5;
+
     /**
      * @Route("/tasks", name="task_list")
      */
-    public function list()
+    public function list(Request $request)
     {
-        return $this->render('task/list.html.twig', ['tasks' => $this->getDoctrine()->getRepository(Task::class)->findAll()]);
+        $pageNumber = $request->query->getInt('page',1);
+        $paginatedTasks =
+            $this->getDoctrine()
+                ->getRepository(Task::class)
+                ->findByIsDonePaginated($pageNumber, self::MAX_TASKS_PER_PAGE, $completedTasks = false);
+
+        return $this->render('task/list.html.twig',
+            ['tasks' => $paginatedTasks]);
+    }
+
+    /**
+     * @Route("/tasks/completed", name="task_list_completed")
+     */
+    public function listCompleted(Request $request)
+    {
+        $pageNumber = $request->query->getInt('page',1);
+        $paginatedTasks =
+            $this->getDoctrine()
+                ->getRepository(Task::class)
+                ->findByIsDonePaginated($pageNumber, self::MAX_TASKS_PER_PAGE, $completedTasks = true);
+
+        return $this->render('task/list_completed.html.twig',
+            ['tasks' => $paginatedTasks]);
     }
 
     /**

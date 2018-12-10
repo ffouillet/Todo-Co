@@ -1,0 +1,16 @@
+{% extends 'bundles/TwigBundle/Exception/error.html.twig' %}
+
+{% block body %}
+    <h1>Oops ! Vous ne pouvez pas accéder à cette page.</h1>
+
+    <p>
+        {{ exception.message }}
+        <br/>
+        Il s'agit là d'une erreur 403, l'accès à la ressource ne vous est malheureusement pas autorisé :-( !<br/>
+
+        Veuillez vérifier l'url saisie ou
+        <a href="{{ path('homepage') }}">retourner à la page d'accueil</a>.
+    </p>
+
+    {% block error_image %}<img src="{{ asset('img/fuyez.jpeg') }}" alt="Fuyez, pauvre fou."/>{% endblock %}
+{% endblock %}

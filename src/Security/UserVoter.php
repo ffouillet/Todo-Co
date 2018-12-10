@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Security;
 
 class UserVoter extends Voter
 {
-    const LIST_VIEW = 'list_views';
+    const LIST_VIEW = 'list_view';
     const ADD = 'add';
     const EDIT = 'edit';
     const DELETE = 'delete';

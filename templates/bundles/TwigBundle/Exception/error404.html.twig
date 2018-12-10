@@ -1,0 +1,13 @@
+{% extends 'bundles/TwigBundle/Exception/error.html.twig' %}
+
+{% block body %}
+    <h1>Oops ! La page que vous demandez n'existe pas :-(</h1>
+
+    <p>
+        Il s'agit là d'une erreur 404 :-( !<br/>
+        Veuillez vérifier l'url saisie ou
+        <a href="{{ path('homepage') }}">retourner à la page d'accueil</a>.
+    </p>
+
+    {% block error_image %}<img src="{{ asset('img/allo_patron.jpeg') }}" alt="Allo patron? On est mal."/>{% endblock %}
+{% endblock %}
