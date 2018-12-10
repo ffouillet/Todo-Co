@@ -87,6 +87,11 @@ class User implements UserInterface
         return $this->roles;
     }
 
+    public function hasRole($role) {
+
+        return \in_array($role, $this->getRoles());
+    }
+
     public function getEmail()
     {
         return $this->email;
