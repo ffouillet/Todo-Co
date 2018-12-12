@@ -28,6 +28,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
+     * @Assert\NotBlank(message="Votre mot de passe ne peut pas être vide.")
      * @ORM\Column(type="string", length=64)
      */
     private $password;
