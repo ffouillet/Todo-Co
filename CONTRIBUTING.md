@@ -16,7 +16,7 @@ email, or any other method with the owners of this repository before making a ch
 7.  **Create unit and or functional tests** if your modifications concerns a bug-fix or a new functionality.
 8.  Run your tests, they must pass before commiting and pushing changes.
 9.  Commit and push your changes.
-10.  Create a Pull Request
+10. Create a Pull Request
 
 ### Code Requirements
 
