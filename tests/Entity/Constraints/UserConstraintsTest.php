@@ -62,7 +62,7 @@ class UserConstraintsTest extends AbstractConstraintsTest
 
         $errors = $this->validator->validate($this->user);
 
-        if (sizeof($errors) == 0) {
+        if (\count($errors) == 0) {
             throw new \Exception('A constraint violation was expected but there were none');
         }
 
