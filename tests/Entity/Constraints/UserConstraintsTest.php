@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\AppBundle\Entity;
+namespace App\Tests\Entity\Constraints;
 
 use App\DataFixtures\UserFixtures;
 use App\Entity\User;

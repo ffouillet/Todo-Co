@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\AppBundle\Entity;
+namespace App\Tests\Entity\Constraints;
 
 use App\Tests\Utils\FixturesAwareKernelTestCase;
 
