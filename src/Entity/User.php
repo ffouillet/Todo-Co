@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @UniqueEntity("email")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -28,6 +28,7 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @Assert\NotBlank(message="Votre mot de passe ne peut pas être vide.")
      * @ORM\Column(type="string", length=64)
      */
     private $password;
@@ -116,5 +117,25 @@ class User implements UserInterface
     public function __toString()
     {
         return (string) $this->username;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password
+            ) = unserialize($serialized, array('allowed_classes' => false));
     }
 }

@@ -95,6 +95,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v2.8.0"
     },
+    "liip/functional-test-bundle": {
+        "version": "2.0.0-alpha10"
+    },
     "monolog/monolog": {
         "version": "1.24.0"
     },
@@ -146,6 +149,9 @@
     "symfony/asset": {
         "version": "v4.1.7"
     },
+    "symfony/browser-kit": {
+        "version": "v4.1.8"
+    },
     "symfony/cache": {
         "version": "v4.1.7"
     },
@@ -161,6 +167,9 @@
             "ref": "181d766db0eb468f41337f9b2d9d5b61ba1ee441"
         }
     },
+    "symfony/css-selector": {
+        "version": "v4.1.8"
+    },
     "symfony/debug": {
         "version": "v4.1.7"
     },
@@ -169,6 +178,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v4.1.7"
+    },
+    "symfony/dom-crawler": {
+        "version": "v4.1.8"
     },
     "symfony/dotenv": {
         "version": "v4.1.7"

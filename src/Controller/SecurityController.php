@@ -33,11 +33,4 @@ class SecurityController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/logout", name="app_logout")
-     */
-    public function logout()
-    {
-        // Handled by Symfony
-    }
 }

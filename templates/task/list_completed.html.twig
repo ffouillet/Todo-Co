@@ -4,9 +4,9 @@
 <h1>Liste des tâches effectuées</h1>
 {% endblock %}
 
-{% block switch_task_view %}<a href="{{ path('task_list') }}" class="btn btn-success"><i class="fas fa-eye"></i>Liste des tâches à effectuer</a>{% endblock %}
+{% block switch_task_view %}<a href="{{ path('task_list_todo') }}" class="btn btn-success"><i class="fas fa-eye"></i>Liste des tâches à effectuer</a>{% endblock %}
 
 {% block empty_tasks_message %}
     <p>Aucune tâche n'a été completée pour le moment.
-    <a href="{{ path('task_list') }}">Voir les tâches à effectuer</a></p>
+    <a href="{{ path('task_list_todo') }}">Voir les tâches à effectuer</a></p>
 {% endblock %}
