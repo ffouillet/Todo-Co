@@ -13,6 +13,10 @@ class TaskRepository extends PagineableRepository {
             ->select('t')
             ->orderBy($entityAlias.'.'.$orderAttribute, $orderValue);
 
+        // Also get task's owner.
+        $qb->join('t.author', 'author');
+        $qb->addSelect('author');
+
         // Get completed tasks (or not)
         if (true === $isDone) {
             $qb->where($entityAlias.'.isDone = true');
