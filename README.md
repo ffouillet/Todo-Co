@@ -35,7 +35,7 @@ Run unit and functional tests by executing following commands at the project roo
 
 This project includes :
 *   [Technical documentation about authentication](https://github.com/ffouillet/Todo-Co/blob/master/doc/Authentication.md)
-*   [Application Diagrams](Todo)
+*   [Application Diagrams](https://github.com/ffouillet/Todo-Co/tree/master/diagrams)
 *   [Quality audit and application performance analysis](Todo)
 
 ## Contributing to the project  
