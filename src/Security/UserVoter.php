@@ -1,6 +1,5 @@
 <?php
 
-// src/Security/PostVoter.php
 namespace App\Security;
 
 use App\Entity\User;
