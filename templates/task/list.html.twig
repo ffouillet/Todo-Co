@@ -29,7 +29,7 @@
                         <td>{{ task.createdAt|localizeddate('none', 'none', null, null, "EEEE dd LLLL yyyy, HH'h'mm")|capitalize}}</td>
                         <td>
                             <a href="{{ path('task_edit', { 'id' : task.id }) }}" class="btn btn-primary"><i class="fas fa-eye"></i>Voir</a>
-                            <a href="{{ path('task_toggle', { 'id' : task.id }) }}" class="btn btn-success"><i class="fas fa-check"></i>Marquer comme faite</a>
+                            {% block toggle_task_btn %}<a href="{{ path('task_toggle', { 'id' : task.id }) }}" class="btn btn-success"><i class="fas fa-check"></i>Marquer comme faite</a>{% endblock %}
                             <a href="{{ path('task_delete', { 'id' : task.id }) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Supprimer</a>
                         </td>
                     </tr>

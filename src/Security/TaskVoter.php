@@ -20,7 +20,7 @@ class TaskVoter extends Voter
             return false;
         }
 
-        // only vote on Post objects inside this voter
+        // only vote on Task objects inside this voter
         if (!$subject instanceof Task) {
             return false;
         }

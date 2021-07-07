@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\AppBundle\Entity;
+namespace App\Tests\Entity;
 
 use App\Entity\Task;
 use App\Entity\User;
